@@ -20,6 +20,21 @@ void notifyDccAccTurnoutOutput(uint16_t Addr, uint8_t Direction, uint8_t OutputP
       case 1:  
         myLed.on();
         break;
+      case 2:
+        myLed.setMode(Blink);
+        myLed.configBlink(10, 500);
+        break;
+      case 3:
+        myLed.setMode(Random);
+        myLed.configRandom(1000, 3000, true);
+        break;
+      case 4:
+        myLed.setMode(Welding);
+        myLed.configWelding(1000, 6, 20, 100, 11);
+        break;
+      case 33:
+        myLed.setMode(Random);
+        myLed.configRandom(5000, 10000, true);
     }
   }
   else
@@ -28,16 +43,20 @@ void notifyDccAccTurnoutOutput(uint16_t Addr, uint8_t Direction, uint8_t OutputP
   }
 }
 
-void setup() { 
+void setup() {
+  //Serial.begin(9600); 
   // Setup which External Interrupt, the Pin it's associated with that we're using and enable the Pull-Up 
   Dcc.pin(0, 2, 1);
+
   // Call the main DCC Init function to enable the DCC Receiver
   Dcc.init(MAN_ID_DIY, 10, CV29_ACCESSORY_DECODER | CV29_OUTPUT_ADDRESS_MODE, 0);
 
   pinMode(LED_BUILTIN, OUTPUT);
+  digitalWrite(LED_BUILTIN, HIGH);
+ 
 }
 
 void loop() {
   Dcc.process();
-  myLed.update();
+  myLed.update(); 
 }
