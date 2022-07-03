@@ -1,3 +1,8 @@
+/*  Basic sketch to domonstrate the use of the NmraDCC library
+ *  as an Accessory contoller. Several DCC Accessory Addresses trigger
+ *  the built in LED to show different effects using the Led3 library 
+ */
+ 
 #include <NmraDcc.h>
 NmraDcc  Dcc;
 #include <Led3.h>
@@ -6,7 +11,7 @@ Led3 myLed = Led3(13);
 // This function is called whenever a normal DCC Turnout Packet is received
 // It returns the Acc Address (1 to 2044) 
 // The Direction 0 (close) or 1 (throw)
-// The Output Power true  (not checking this)
+// The Output Power true (not checking this)
 void notifyDccAccTurnoutOutput(uint16_t Addr, uint8_t Direction, uint8_t OutputPower) {
   if (Addr == 1)
   {
