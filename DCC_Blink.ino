@@ -1,14 +1,14 @@
 #include <NmraDcc.h>
 NmraDcc  Dcc;
 
-int accyAddr = 1;
+int accessoryAddress = 1;
 
 // This function is called whenever a normal DCC Turnout Packet is received
 // It returns the Acc Address (1 to 2044) 
 // The Direction 0 (close) or 1 (throw)
 // The Output Power true  (not checking this)
-void notifyDccAccTurnoutOutput(uint16_t Addr, uint8_t Direction, uint8_t OutputPower) {
-  if (Addr == accyAddr)
+void notifyDccAccTurnoutOutput(uint16_t receivedAddress, uint8_t direction, uint8_t outputPower) {
+  if (receivedAddress == accessoryAddress)
   {
     if (Direction)
     {
