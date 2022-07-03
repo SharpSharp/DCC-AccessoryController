@@ -18,8 +18,8 @@ AccelStepper stepper2(AccelStepper::FULL4WIRE, 8, 9, 10, 11);
 // It returns the Acc Address (1 to 2044) 
 // The Direction 0 (close) or 1 (throw)
 // The Output Power true (not checking this)
-void notifyDccAccTurnoutOutput(uint16_t Addr, uint8_t Direction, uint8_t OutputPower) {
-  switch (Addr)
+void notifyDccAccTurnoutOutput(uint16_t receivedAddress, uint8_t direction, uint8_t outputPower) {
+  switch (receivedAddress)
   {
     case 111:
       stepper1.move(5000);
