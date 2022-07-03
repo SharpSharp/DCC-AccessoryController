@@ -27,6 +27,10 @@ void notifyDccAccTurnoutOutput(uint16_t Addr, uint8_t Direction, uint8_t OutputP
     case 222:
       stepper2.move(6000);
       break;
+    case 999:
+      stepper1.stop();
+      stepper2.stop();
+      break;
   }
 }
 
