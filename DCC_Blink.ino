@@ -10,7 +10,7 @@ int accessoryAddress = 1;
 void notifyDccAccTurnoutOutput(uint16_t receivedAddress, uint8_t direction, uint8_t outputPower) {
   if (receivedAddress == accessoryAddress)
   {
-    if (Direction)
+    if (direction)
     {
       digitalWrite(LED_BUILTIN, HIGH);
     }
