@@ -13,16 +13,18 @@ Led3 myLed = Led3(13);
 // The Direction 0 (close) or 1 (throw)
 // The Output Power true (not checking this)
 void notifyDccAccTurnoutOutput(uint16_t Addr, uint8_t Direction, uint8_t OutputPower) {
-  if (Addr == 1)
+  if (Direction)
   {
-    if (Direction)
+    switch (Addr)
     {
-      myLed.on();
+      case 1:  
+        myLed.on();
+        break;
     }
-    else
-    {
-      myLed.off();
-    }
+  }
+  else
+  {
+    myLed.off();
   }
 }
 
